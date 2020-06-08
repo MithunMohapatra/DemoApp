@@ -1,0 +1,150 @@
+<!-- <div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+
+    <div class="card-body" *ngIf="product">
+        <div class="wizard">
+            <a [routerLink]="['info']" routerLinkActive="active">
+                Basic Information<span [ngClass]="{'fa fa-exclamation': !isValid('info')}"></span>
+            </a>
+            <a [routerLink]="['tags']" routerLinkActive="active">
+                Search Tags<span [ngClass]="{'fa fa-exclamation': !isValid('tags')}"></span>
+            </a>
+        </div>
+
+        <router-outlet></router-outlet>
+
+        <div class="row mb-2">
+            <div class="col-md-4">
+                <button class="btn btn-primary mr-3" style="width:80px" type="button"
+                    [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                    [disabled]="!isValid()" (click)="saveProduct()">
+                    Save
+                </button>
+                <button class="btn btn-outline-secondary mr-3" style="width:80px" type="button"
+                    title="Cancel your edits" [routerLink]="['/products']">
+                    Cancel
+                </button>
+                <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete this product"
+                    (click)="deleteProduct()">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
+</div> -->
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        <form novalidate #employeeForm="ngForm">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="EmployeeNameId">Employee Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="EmployeeNameId" type="text" placeholder="Name (required)" required
+                        minlength="3" [(ngModel)]=employee.first_name name="first_name" #employeeFNameVar="ngModel"
+                        [ngClass]="{'is-invalid': (employeeFNameVar.touched || 
+                        employeeFNameVar.dirty ||
+                                              employee.id !== 0) && 
+                                              !employeeFNameVar.valid }" />
+                    <span class="invalid-feedback">
+                        <span *ngIf="employeeFNameVar.errors?.required">
+                            employee name is required.
+                        </span>
+                        <span *ngIf="employeeFNameVar.errors?.minlength">
+                            employee name must be at least three characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="EmployeeNameId">Employee LastName</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="EmployeeNameId" type="text" placeholder="Name (required)" required
+                        minlength="3" [(ngModel)]=employee.last_name name="last_name" #employeeLNameVar="ngModel"
+                        [ngClass]="{'is-invalid': (employeeLNameVar.touched || 
+                        employeeLNameVar.dirty ||
+                                              employee.id !== 0) && 
+                                              !employeeLNameVar.valid }" />
+                    <span class="invalid-feedback">
+                        <span *ngIf="employeeLNameVar.errors?.required">
+                            employee last name is required.
+                        </span>
+                        <span *ngIf="employeeLNameVar.errors?.minlength">
+                            employee last name must be at least three characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="EmployeeNameId">Employee Avatar</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="EmployeeNameId" type="text" placeholder="Name (required)" required
+                        minlength="3" [(ngModel)]=employee.avatar name="avatar" #employeeANameVar="ngModel" [ngClass]="{'is-invalid': (employeeANameVar.touched || 
+                        employeeANameVar.dirty ||
+                                              employee.id !== 0) && 
+                                              !employeeANameVar.valid }" />
+                    <span class="invalid-feedback">
+                        <span *ngIf="employeeANameVar.errors?.required">
+                            employee avatar is required.
+                        </span>
+                        <span *ngIf="employeeANameVar.errors?.minlength">
+                            employee last avatar must be at least three characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <button class="btn btn-primary mr-3" style="width:80px" type="button"
+                        [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                        [disabled]="!isValid()" (click)="saveEmployee()">
+                        Save
+                    </button>
+                    <button class="btn btn-outline-secondary mr-3" style="width:80px" type="button"
+                        title="Cancel your edits" [routerLink]="['/list']">
+                        Cancel
+                    </button>
+                    <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete this product"
+                        (click)="deleteEmployee()">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="productCodeId">Product Code</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="productCodeId" type="text" placeholder="Code (required)" required
+                        [(ngModel)]=product.productCode name="productCode" #productCodeVar="ngModel" [ngClass]="{'is-invalid': (productCodeVar.touched || 
+                                              productCodeVar.dirty ||
+                                              product.id !== 0) &&
+                                              !productCodeVar.valid }" />
+                    <span class="invalid-feedback">
+                        <span *ngIf="productCodeVar.errors?.required">
+                            Product code is required.
+                        </span>
+                    </span>
+                </div>
+            </div> -->
+
+<!-- <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="descriptionId">Description</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="descriptionId" placeholder="Description" rows=3
+                        [(ngModel)]=product.description name="description"></textarea>
+                </div>
+            </div> -->
+<!-- </fieldset>
+    </form>
+</div> -->

@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" *ngIf="employeeList && employeeList.length">
+                <thead>
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employeeList">
+                        <td><a [routerLink]="['/list',employee.id]">
+                                {{employee.first_name}}
+                            </a></td>
+                        <td>{{employee.last_name}}</td>
+                        <td>{{employee.last_name}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.avatar}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
